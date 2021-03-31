@@ -1,8 +1,6 @@
 "use strict";
-const Human = require("./players");
-console.log(Human);
-const Computer = require("./players");
-console.log(Computer);
+const Human = require("./human");
+const Computer = require("./computer");
 const prompt = require('prompt-sync')();
 
 class Game {
@@ -16,9 +14,12 @@ class Game {
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Human ("bubba");
         }
-        else if(userInput = "one"){
+        if(userInput = "one"){
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Computer ("computer");
+        }
+        else {
+            return chooseGame();
         }
     }
     //Runs the game
