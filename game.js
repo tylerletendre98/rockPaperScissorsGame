@@ -18,9 +18,6 @@ class Game {
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Computer ("computer");
         }
-        else {
-            return chooseGame();
-        }
     }
     //Runs the game
     runGame(){
@@ -139,10 +136,10 @@ class Game {
         // }
         
         if(this.playerOne.score > this.playerTwo.score) {
-            console.log(this.playerOne.name + " wins this game!");
+            console.log(this.playerOne.name + " wins the game!");
         }
         else {
-            console.log(this.playerTwo.name + " wins this game!");
+            console.log(this.playerTwo.name + " wins the game!");
         }
           
     }
