@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
-    
   },
   "repository": {
     "type": "git",
@@ -18,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/tylerletendre98/rockPaperScissorsGame/issues"
   },
-  "homepage": "https://github.com/tylerletendre98/rockPaperScissorsGame#readme"
+  "homepage": "https://github.com/tylerletendre98/rockPaperScissorsGame#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
