@@ -10,13 +10,18 @@ class Game {
     }
     chooseGame(){
     let userInput = prompt("How many players will be playing one or two?: ");
-        if (userInput == "two"){
+        switch(userInput){
+        case "two":
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Human ("bubba");
-        }
-        if(userInput = "one"){
+                break;
+        case  "one":
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Computer ("computer");
+                break;
+        default:
+                console.log("that was not a valid response please try again one or two: ");
+                return this.chooseGame();
         }
     }
     //Runs the game
@@ -31,6 +36,16 @@ class Game {
             console.log(`${this.playerOne.name}'s score is ${this.playerOne.score} and ${this.playerTwo.name}'s score is ${this.playerTwo.score}`)
         }
         this.displayWinner();
+        let anotherGame = prompt("Do you want to play another game yes or no: ");
+        if (anotherGame == "yes"){
+            return this.runGame();
+        }
+        else if (anotherGame == "no"){
+            console.log("Thankyou for playing Rock Paper Scissors Lizard Spock!");
+        }
+        else {
+            (console.log("that was not a valid response."))
+        }
     }
     calculateWinner(playerOnesChoice, playerTwosChoice){
         // players choice rock and paper
@@ -65,7 +80,7 @@ class Game {
         }
         //players choose lizard and paper
         else if(playerOnesChoice === "lizard" && playerTwosChoice === "paper"){
-            console.log("paper covers rock");
+            console.log("lizard eats paper");
             this.playerOne.score++
         }
         else if(playerTwosChoice === "lizard" && playerOnesChoice === "paper"){
@@ -128,13 +143,6 @@ class Game {
         }
     }
     displayWinner(){
-        // if (this.playerOne.score === 3){
-        //     console.log(this.playerOne.name + " has won the game");
-        // }
-        // if(this.playerTwo.score === 3){
-        //     console.log(this.playerTwo.name + " has won the game");
-        // }
-        
         if(this.playerOne.score > this.playerTwo.score) {
             console.log(this.playerOne.name + " wins the game!");
         }

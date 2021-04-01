@@ -3,7 +3,7 @@ class Player {
     constructor (name) {
         this.score = 0
         this.name = name;
-        this.choices = ['rock','scissors','paper','lizard','spock'];
+        this.choices = ['rock','paper','scissors','lizard','spock'];
     }
 
 }
