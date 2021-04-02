@@ -1,4 +1,6 @@
-const prompt = require("prompt-sync")();
+const Gestures = require("./gestures");
+
+
 class Player {
     constructor (name) {
         this.score = 0

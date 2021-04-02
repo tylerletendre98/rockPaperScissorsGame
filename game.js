@@ -2,12 +2,26 @@
 const Human = require("./human");
 const Computer = require("./computer");
 const prompt = require('prompt-sync')();
+const Gestures = require('./gestures');
+const Rock = require("./rock");
+const Paper = require('./paper');
+const Scissors = require('./scissors');
+const Lizard = require('./lizard');
+const Spock = require('./spock');
 
 class Game {
     constructor(){
         this.playerOne = null
         this.playerTwo = null
     }
+    //Runs the game
+    runGame(){
+        this.chooseGame();
+        this.playTillWinner();
+        this.displayWinner();
+        this.playerAnotherGame();
+    }
+    //player chooses if they want a one or two player game
     chooseGame(){
     let userInput = prompt("How many players will be playing one or two?: ");
         switch(userInput){
@@ -24,18 +38,19 @@ class Game {
                 return this.chooseGame();
         }
     }
-    //Runs the game
-    runGame(){
-        this.chooseGame();
+    //loops till someone reaches a score of three
+    playTillWinner(){
         while(this.playerOne.score < 3 && this.playerTwo.score < 3){
             console.log(`its ${this.playerOne.name}'s turn `);
-            let playerOnesChoice = this.playerOne.chooseAnOption();
+                let playerOnesChoice = this.playerOne.chooseGesture();
             console.log(`its ${this.playerTwo.name}'s turn: `);
-            let playerTwosChoice = this.playerTwo.chooseAnOption();
+                let playerTwosChoice = this.playerTwo.chooseGesture();
             this.calculateWinner(playerOnesChoice,playerTwosChoice);
-            console.log(`${this.playerOne.name}'s score is ${this.playerOne.score} and ${this.playerTwo.name}'s score is ${this.playerTwo.score}`)
+            console.log(`${this.playerOne.name}'s score is ${this.playerOne.score} and ${this.playerTwo.name}'s score is ${this.playerTwo.score}`);
         }
-        this.displayWinner();
+    }
+    //asks if the player wants to play again
+    playerAnotherGame(){
         let anotherGame = prompt("Do you want to play another game yes or no: ");
         if (anotherGame == "yes"){
             return this.runGame();
@@ -47,6 +62,17 @@ class Game {
             (console.log("that was not a valid response."))
         }
     }
+    //displays winner of the game 
+    displayWinner(){
+        if(this.playerOne.score > this.playerTwo.score) {
+            console.log(this.playerOne.name + " wins the game!");
+        }
+        else {
+            console.log(this.playerTwo.name + " wins the game!");
+        }
+          
+    }
+    // runs the outcome of the two choices
     calculateWinner(playerOnesChoice, playerTwosChoice){
         // players choice rock and paper
         if(playerOnesChoice === playerTwosChoice){
@@ -142,14 +168,5 @@ class Game {
             this.playerTwo.score++;
         }
     }
-    displayWinner(){
-        if(this.playerOne.score > this.playerTwo.score) {
-            console.log(this.playerOne.name + " wins the game!");
-        }
-        else {
-            console.log(this.playerTwo.name + " wins the game!");
-        }
-          
-    }
 }
-module.exports= Game;
+    module.exports= Game;

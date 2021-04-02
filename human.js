@@ -6,7 +6,8 @@ class Human extends Player{
     constructor(name){
         super(name);
     }
-    chooseAnOption(){
+    //player choose their gesture
+    chooseGesture(){
         let playersChoice = prompt("What option would you like to choose 1.rock  2.paper  3.scissors 4.lizard  5.spock  option: ");
         if (playersChoice == "1"){
             console.log("Your choice was " + this.choices[0]);
@@ -30,7 +31,7 @@ class Human extends Player{
         }
         else{
             console.log("that was not a valid responce please try again");
-            return this.chooseAnOption();
+            return this.chooseGesture();
         }
     }
 
