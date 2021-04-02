@@ -1,4 +1,9 @@
 const Gestures = require("./gestures");
+const Lizard = require("./lizard");
+const Paper = require("./paper");
+const Rock = require("./rock");
+const Scissors = require("./scissors");
+const Spock = require("./spock");
 
 
 class Player {

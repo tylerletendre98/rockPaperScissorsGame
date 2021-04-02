@@ -21,26 +21,37 @@ class Game {
         this.displayWinner();
         this.playerAnotherGame();
     }
+    howManyGames(){
+        let amountOfGames = parseInt(prompt('how many times does the winner have to win? Minimum of three: '));
+        if (amountOfGames == NaN || amountOfGames < 3){
+            console.log("that was not a valid response please enter in another option: ")
+            return this.howManyGames();
+        }
+        else{
+        return amountOfGames;
+        }
+    }
     //player chooses if they want a one or two player game
     chooseGame(){
-    let userInput = prompt("How many players will be playing one or two?: ");
+    let userInput = prompt("How many players will be playing 1 or 2?: ");
         switch(userInput){
-        case "two":
+        case "2":
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Human ("bubba");
                 break;
-        case  "one":
+        case  "1":
                 this.playerOne = new Human ("tyler");
                 this.playerTwo = new Computer ("computer");
                 break;
         default:
-                console.log("that was not a valid response please try again one or two: ");
+                console.log("that was not a valid response please try again 1 or 2: ");
                 return this.chooseGame();
         }
     }
     //loops till someone reaches a score of three
     playTillWinner(){
-        while(this.playerOne.score < 3 && this.playerTwo.score < 3){
+        let amountOfGames = this.howManyGames();
+        while(this.playerOne.score < amountOfGames && this.playerTwo.score < amountOfGames){
             console.log(`its ${this.playerOne.name}'s turn `);
                 let playerOnesChoice = this.playerOne.chooseGesture();
             console.log(`its ${this.playerTwo.name}'s turn: `);
@@ -59,7 +70,7 @@ class Game {
             console.log("Thankyou for playing Rock Paper Scissors Lizard Spock!");
         }
         else {
-            (console.log("that was not a valid response."))
+            (console.log("that was not a valid response. Please choose again: "))
         }
     }
     //displays winner of the game 
